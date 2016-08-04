@@ -4,13 +4,21 @@ class SepText:
   def __init__(self, sep, text=None, file=None):
     self._sep = sep
     # if text != None:
-      # self._data = self.
+    #   self._data = self.
       # open(fname, mode)
 
-  def __del__(self):
-      self._file.close()
+  # def __del__(self):
+  #   self._file.close()
 
-  # def _get
+  def _pars_text(self, text):
+    lines = text.splitlines()
+    return self._pars_lines(lines)
+
+  def _pars_lines(self, lines):
+
+    data = []
+
+
   def get_strlst(self):
     return self._file.readlines()
 
