@@ -8,12 +8,12 @@ class Septext:
             line_list = text.splitlines()
         elif fname is not None:
             with open(fname, mode='r') as file:
-                line_list = file.readline()
+                line_list = file.readlines()
         else:
             return
 
         if len(line_list) > 0:
-            self._header = line_list[0].slplit(sep)                             # Первая строка - заголовок
+            self._header = line_list[0].split(sep)                             # Первая строка - заголовок
             if len(line_list) > 1:
                 self._data = [line.split(sep) for line in line_list[1:]]        # Остальные строки - данные
 
