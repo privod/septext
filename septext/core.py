@@ -1,13 +1,12 @@
 class Septext:
 
-    def __init__(self, sep, text=None, fname=None):
+    def __init__(self, sep, text=None, file_name=None):
         self._sep = sep
 
-        line_list = []
         if text is not None:
             line_list = text.splitlines()
-        elif fname is not None:
-            with open(fname, mode='r') as file:
+        elif file_name is not None:
+            with open(file_name, mode='r') as file:
                 line_list = file.readlines()
         else:
             return
@@ -18,9 +17,9 @@ class Septext:
                 self._data = [line.split(sep) for line in line_list[1:]]        # Остальные строки - данные
 
     def get_line_list(self):
-        return [self._sep.join(self._data) for line in self._data]
+        return [self._sep.join(line) for line in self._data]
 
-    def get_array(self, sep=None):
+    def get_array(self):
         return self._data
 
     def count(self):
