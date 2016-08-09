@@ -1,6 +1,6 @@
 class Septext:
 
-    def __init__(self, sep, text=None, file_name=None):
+    def __init__(self, sep, file_name=None, text=None):
         self._sep = sep
 
         if text is not None:
