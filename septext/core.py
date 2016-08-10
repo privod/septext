@@ -3,13 +3,14 @@ class Septext:
     def __init__(self, sep, file_name=None, text=None):
         self._sep = sep
 
-        if text is not None:
-            line_list = text.splitlines()
-        elif file_name is not None:
+        if file_name is not None:
             with open(file_name, mode='r') as file:
-                line_list = file.readlines()
-        else:
+                text = file.read()
+
+        if text is None:
             return
+
+        line_list = text.splitlines()
 
         if len(line_list) > 0:
             self._header = line_list[0].split(sep)                             # Первая строка - заголовок
@@ -26,8 +27,8 @@ class Septext:
         return len(self._data)
 
     def get_dict(self, index):
-        for key, val in zip(self._header, self._data[index]):
-            return {key: val}
+        return {key: val for key, val in zip(self._header, self._data[index])}
+
 
     def get_dict_list(self):
         return [self.get_dict(index) for index in range(self.count())]
