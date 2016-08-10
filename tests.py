@@ -22,11 +22,12 @@ class SeptextTestCase(TestCase):
             with open(temp_file_name, 'w') as file:
                 file.write(text)
                 file.close()
-
             septext = Septext("\t", temp_file_name)
-
-            self.assertEqual(septext.count(), 4)
-
-            self.assertEqual(septext.get_dict(2), {"serial": "333", "number": "67890"})
         finally:
             os.remove(temp_file_name)
+
+        self.assertEqual(septext.count(), 4)
+
+        self.assertEqual(septext.get_dict(2), {"serial": "333", "number": "67890"})
+
+        self.assertEqual(septext.get_dict_list()[3], {"serial": "444", "number": "09876"})
